@@ -13,6 +13,8 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
 import useBaseQueryClient from 'hooks/queries/useBaseQueryClient'
+import Menu from 'components/Menu'
+import 'aos/dist/aos.css'
 
 function GlobalHooks() {
   return null
@@ -84,6 +86,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const Layout = Component.Layout || Fragment
   return (
     <>
+      <Menu />
       <Layout>
         <Component {...pageProps} />
       </Layout>

@@ -4,8 +4,8 @@ import { CardTheme } from '../components/Common/Card/types'
 // import { RadioTheme } from 'components/Radio/types'
 // import { ToggleTheme } from 'components/Toggle/theme'
 // import { TooltipTheme } from 'components/Tooltip/types'
-// import { NavThemeType } from '../components/Menu/theme'
-// import { ModalTheme } from '../components/widgets/Modal/types'
+import { NavThemeType } from '../components/Menu/theme'
+import { ModalTheme } from '../components/Common/Modal/types'
 import { Breakpoints, Colors, MediaQueries, Radii, Shadows, Spacing, ZIndices } from './types'
 
 export interface NFTUiKitTheme {
@@ -14,8 +14,8 @@ export interface NFTUiKitTheme {
   alert: AlertTheme
   colors: Colors
   card: CardTheme
-  // nav: NavThemeType
-  // modal: ModalTheme
+  nav: NavThemeType
+  modal: ModalTheme
   // pancakeToggle: PancakeToggleTheme
   // radio: RadioTheme
   // toggle: ToggleTheme
