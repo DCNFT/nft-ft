@@ -42,7 +42,7 @@ function MyApp(props: AppProps) {
       </Head>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <Providers store={store}>
+          <Providers store={store} session={pageProps.session}>
             <GlobalHooks />
             <ResetCSS />
             <GlobalStyle />

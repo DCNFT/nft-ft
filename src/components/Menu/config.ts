@@ -18,7 +18,7 @@ export type ConfigMenuItemsType = Omit<MenuItemsType, 'items'> & { hideSubNav?: 
 
 const config = [
   {
-    label: '',
+    label: '검색',
     href: '/search',
     // icon: 'SwapIcon',
     // fillIcon: 'SwapFillIcon',

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Link from 'next/link'
 
 type StyledMenuItemProps = {
   isActive: boolean
@@ -12,14 +13,23 @@ const St = {
     &:hover {
       background: ${({ theme }) => theme.colors.tertiary};
     }
+    z-index: 9999;
   `,
 }
 type MenuItemProps = {
   isActive: boolean
   children: React.ReactNode
+  href: string
 }
-const MenuItem = ({ isActive, children }: MenuItemProps) => {
-  return <St.StyledMenuItem isActive={isActive}>{children}</St.StyledMenuItem>
+const MenuItem = ({ isActive, children, href }: MenuItemProps) => {
+  console.log('href = ', href)
+  return (
+    <St.StyledMenuItem isActive={isActive}>
+      <Link href={href}>
+        <a>{children}</a>
+      </Link>
+    </St.StyledMenuItem>
+  )
 }
 
 export default MenuItem

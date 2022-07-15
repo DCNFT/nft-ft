@@ -35,52 +35,6 @@ const fading = () => keyframes`
   }
 `
 
-const BgWrapper = styled.div`
-  z-index: -1;
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  bottom: 0px;
-  left: 0px;
-`
-
-const InnerWrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  bottom: -3px;
-`
-
-const ImageWrapper = styled.div`
-  width: 100%;
-  animation: ${flyingAnim} 3.5s ease-in-out infinite;
-  will-change: transform;
-  > span {
-    overflow: visible !important; // make sure the next-image pre-build blur image not be cropped
-  }
-`
-
-const StarsWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  & :nth-child(2) {
-    animation: ${fading} 2s ease-in-out infinite;
-    animation-delay: 1s;
-  }
-
-  & :nth-child(3) {
-    animation: ${fading} 5s ease-in-out infinite;
-    animation-delay: 0.66s;
-  }
-
-  & :nth-child(4) {
-    animation: ${fading} 2.5s ease-in-out infinite;
-    animation-delay: 0.33s;
-  }
-`
-
 type LayoutContainerProps = {
   leftChildren: ReactElement
   rightChildren: ReactElement
@@ -90,11 +44,12 @@ type LayoutContainerProps = {
 
 const LeftContainer = styled.div`
   flex: 1 1;
-  justify-content: center;
+  justify-content: center;  text-align: center;
 `
 const RightContainer = styled.div`
   flex: 1 1;
   justify-content: center;
+  text-align: center;
 `
 const LayoutContainer = ({ leftChildren, rightChildren, leftAosArray, rightAosArray }: LayoutContainerProps) => {
   const { theme } = useTheme()

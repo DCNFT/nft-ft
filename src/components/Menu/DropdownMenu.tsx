@@ -7,6 +7,7 @@ import Text from '../Common/Text/Text'
 import { Colors } from 'theme'
 // import { DropdownMenuDivider, DropdownMenuItem, LinkStatus, StyledDropdownMenuItemContainer } from './styles'
 import { DropdownMenuItemType, DropdownMenuProps } from './types'
+import Link from 'next/link'
 import styled from 'styled-components'
 
 export const StyledDropdownMenu = styled.div<{ isOpen: boolean; isBottomNav: boolean }>`
@@ -136,6 +137,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
     },
   )
 
+  console.log('hasITEM', hasItems)
   return (
     <Box ref={setTargetRef} {...props}>
       <Box
@@ -170,7 +172,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
               return (
                 <StyledDropdownMenuItemContainer key={itemItem}>
                   <DropdownMenuItem isActive={isActive} type="button" {...itemProps}>
-                    {MenuItemContent}
+                    <Link href={href}>{MenuItemContent}</Link>
                   </DropdownMenuItem>
                 </StyledDropdownMenuItemContainer>
               )

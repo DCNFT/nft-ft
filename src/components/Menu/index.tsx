@@ -13,6 +13,7 @@ const St = {
   Wrapper: styled.div`
     position: relative;
     width: 100%;
+    z-index: 99999;
   `,
   StyledNav: styled.nav`
     display: flex;
@@ -65,7 +66,9 @@ const MenuWrapper = () => {
               MenuConfig.map((menuItem) => {
                 return (
                   <DropdownMenu items={menuItem.items}>
-                    <MenuItem isActive={false}>{menuItem.label}</MenuItem>
+                    <MenuItem isActive={false} href={menuItem.href}>
+                      {menuItem.label}
+                    </MenuItem>
                   </DropdownMenu>
                 )
               })}

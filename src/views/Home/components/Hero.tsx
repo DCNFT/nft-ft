@@ -56,6 +56,7 @@ const InnerWrapper = styled.div`
 
 const BunnyWrapper = styled.div`
   width: 100%;
+  text-align: center;
   animation: ${flyingAnim} 3.5s ease-in-out infinite;
   will-change: transform;
   > span {
@@ -145,7 +146,7 @@ const Hero = () => {
         gridTemplateAreas="'c c c c c c r r r r r r'"
         gridTemplateColumns="repeat(12,1fr)"
       >
-        <div style={{ gridArea: 'c' }}>
+        <div style={{ gridArea: 'c', textAlign: 'center' }}>
           <Heading scale="xxl" color="secondary" mb="24px" data-aos="fade-up" data-aos-anchor-placement="top-center">
             {'Going to be Verified Revolution'}
           </Heading>

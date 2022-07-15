@@ -15,6 +15,7 @@ const flyingAnim = () => keyframes`
 const St = {
   ImageWrapper: styled.div`
     width: 100%;
+    text-align: center;
     animation: ${flyingAnim} 3.5s ease-in-out infinite;
     will-change: transform;
     > span {
