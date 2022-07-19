@@ -10,6 +10,7 @@ export interface CardProps extends SpaceProps, HTMLAttributes<HTMLDivElement> {
   isDisabled?: boolean
   borderBackground?: string
   background?: string
+  test?: () => void
 }
 interface StyledCardProps extends CardProps {
   theme: DefaultTheme
@@ -26,7 +27,13 @@ const PromotedGradient = keyframes`
     background-position: 50% 0%;
   }
 `
-const getBorderColor = ({ isActive, isSuccess, isWarning, borderBackground, theme }: StyledCardProps) => {
+const getBorderColor = ({
+  isActive,
+  isSuccess,
+  isWarning,
+  borderBackground,
+  theme,
+}: StyledCardProps) => {
   if (borderBackground) {
     return borderBackground
   }
