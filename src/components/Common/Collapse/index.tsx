@@ -23,6 +23,12 @@ const St = {
     font-weight: bold;
     font-size: 1.8rem;
   `,
+  IconWrapper: styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+  `,
 }
 const Collapse = ({ title, children }: any) => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(true)
@@ -48,10 +54,15 @@ const Collapse = ({ title, children }: any) => {
 
   return (
     <div style={{ marginBottom: '12px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Text bold fontSize="18px">
-          {title}
-        </Text>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', padding: '5px 0' }}>
+          <St.IconWrapper>{iconMap.AlignLeftOutlined}</St.IconWrapper>
+
+          <Text fontSize="16px" bold>
+            {title}
+          </Text>
+        </div>
+
         <St.Icon onClick={handleButtonClick} isSubMenuOpen={isSubMenuOpen}>
           {iconMap.UpOutlined}
         </St.Icon>

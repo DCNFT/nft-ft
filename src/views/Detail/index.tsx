@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Text } from 'components/Common/Text'
-import { Box } from 'components/Common/Box'
+import { Box, Flex } from 'components/Common/Box'
 import styled from 'styled-components'
 import Page from 'components/Layout/Page'
 import Collapse from 'components/Common/Collapse'
@@ -12,6 +12,25 @@ const St = {
     border-radius: 8px;
     background: #efefef;
   `,
+  PropertyContainer: styled.div`
+    flex: 1;
+    margin: 5px;
+    width: 100px;
+    height: 50px;
+    background: rgba(21, 178, 229, 0.06);
+    text-align: center;
+    padding: 10px;
+    borderradius: 4px;
+  `,
+  MainButton: styled.div`
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #e48927;
+  `,
 }
 
 // type DetailProps = {
@@ -19,15 +38,8 @@ const St = {
 // }
 const ScanResult = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '50%',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', padding: '10px' }}>
+    <Flex justifyContent="space-between" alignItems="center" width="50%">
+      <Flex alignItems="center" padding="10px">
         <Box padding="5px">
           <svg
             width="16"
@@ -49,40 +61,29 @@ const ScanResult = () => {
           <div className="text-tiny">Contract has been audited</div>
           <div className="">contract</div>
         </div>
-      </div>
+      </Flex>
       <Box padding={'5px'}>
         <div className="">-</div>
       </Box>
-    </div>
+    </Flex>
   )
 }
 const Property = () => {
   return (
-    <div
-      style={{
-        flex: 1,
-        margin: '5px',
-        width: '100px',
-        height: '50px',
-        background: 'rgba(21, 178, 229, 0.06)',
-        textAlign: 'center',
-        padding: '10px',
-        borderRadius: '4px',
-      }}
-    >
+    <St.PropertyContainer>
       <div>
         <Text color="rgb(32, 129, 226)" fontSize="14px">
           Title
         </Text>
       </div>
       <div>None</div>
-    </div>
+    </St.PropertyContainer>
   )
 }
 const Detail = () => {
   return (
     <Page>
-      <div style={{ display: 'flex' }}>
+      <Flex>
         <St.ImageWrapper>
           <img
             src="/images/home/nft/mountain.jpg"
@@ -94,7 +95,7 @@ const Detail = () => {
             }}
           />
         </St.ImageWrapper>
-        <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '0 20px' }}>
+        <Flex flexDirection="column" flex={1} padding={'0 20px'}>
           <Text fontSize="42px" bold>
             NFT TITLE
           </Text>
@@ -107,7 +108,9 @@ const Detail = () => {
             quisquam est, qui dolorem.
           </Text>
           <div style={{ display: 'flex' }}>
-            <div></div>
+            <div>
+              <Box width="24px" height="24px" borderRadius="50%"></Box>
+            </div>
             <div>
               <div>
                 <Text>owner</Text>
@@ -117,20 +120,13 @@ const Detail = () => {
               </div>
             </div>
           </div>
-          <div
-            style={{
-              width: '200px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'centers',
-            }}
-          >
-            <div>버튼</div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
+          <St.MainButton>
+            <Text>버튼</Text>
+          </St.MainButton>
+        </Flex>
+      </Flex>
+      <Box mt="20px">
+        <Flex flexDirection="column" width="50%">
           <Collapse title="property">
             <div style={{ display: 'flex', width: '50%', flexWrap: 'wrap' }}>
               <Property />
@@ -138,6 +134,7 @@ const Detail = () => {
               <Property />
             </div>
           </Collapse>
+
           <Collapse title="description">
             <div style={{ display: 'flex', width: '50%', flexWrap: 'wrap' }}>
               Azuki starts with a collection of 10,000 avatars that give you membership access to
@@ -154,9 +151,11 @@ const Detail = () => {
               drops, experiences, and more. Visit
             </div>
           </Collapse>
-        </div>
-        <div>
-          <Text>검사 목록 </Text>
+        </Flex>
+        <Box mt="20px">
+          <Text bold fontSize="20px">
+            검사 목록
+          </Text>
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             <ScanResult />
             <ScanResult /> <ScanResult /> <ScanResult /> <ScanResult /> <ScanResult />
@@ -166,8 +165,8 @@ const Detail = () => {
             <ScanResult /> <ScanResult /> <ScanResult /> <ScanResult /> <ScanResult />
             <ScanResult /> <ScanResult />
           </div>
-        </div>
-      </div>
+        </Box>
+      </Box>
     </Page>
   )
 }

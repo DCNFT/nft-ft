@@ -11,7 +11,8 @@ import {
   CheckCircleFilled,
   CaretUpOutlined,
   UpOutlined,
-} from '@ant-design/icons';
+  AlignLeftOutlined,
+} from '@ant-design/icons'
 
 const Iconmap: { [unit: string]: object } = {
   SearchOutlined: <SearchOutlined />,
@@ -26,6 +27,7 @@ const Iconmap: { [unit: string]: object } = {
   CheckCircleFilled: <CheckCircleFilled />,
   CaretUpOutlined: <CaretUpOutlined />,
   UpOutlined: <UpOutlined />,
-};
+  AlignLeftOutlined: <AlignLeftOutlined />,
+}
 
-export default Iconmap;
+export default Iconmap
