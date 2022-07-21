@@ -4,6 +4,10 @@ import { Box, Flex } from 'components/Common/Box'
 import styled from 'styled-components'
 import Page from 'components/Layout/Page'
 import Collapse from 'components/Common/Collapse'
+import { useQuery } from 'react-query'
+
+import useToast from 'hooks/useToast'
+
 const St = {
   ImageWrapper: styled.div`
     flex: 1;
@@ -80,7 +84,33 @@ const Property = () => {
     </St.PropertyContainer>
   )
 }
+export const fetchComments = async (postId) => {
+  const response = await (
+    await fetch(
+      `https://api.etherscan.io/api
+      ?module=account
+      &action=tokennfttx
+      &contractaddress=0x223E16c52436CAb2cA9FE37087C79986a288FFFA
+      &address=0x6975be450864c02b4613023c2152ee0743572325
+      &page=1
+      &offset=100
+      &startblock=0
+      &endblock=27025780
+      &sort=asc
+      &apikey=1FPXJVPY7TF6CNQ7UUAC65WXA2GYID9D27`,
+    )
+  ).json()
+  return response
+}
 const Detail = () => {
+  const { toastSuccess } = useToast()
+
+  const handleToast = () => {
+    toastSuccess('hello', <div>hello</div>)
+  }
+  const handleToast2 = () => {
+    toastSuccess('hello2', <div>hello2</div>)
+  }
   return (
     <Page>
       <Flex>
@@ -120,8 +150,11 @@ const Detail = () => {
               </div>
             </div>
           </div>
-          <St.MainButton>
+          <St.MainButton onClick={handleToast}>
             <Text>버튼</Text>
+          </St.MainButton>
+          <St.MainButton onClick={handleToast2}>
+            <Text>버튼2</Text>
           </St.MainButton>
         </Flex>
       </Flex>

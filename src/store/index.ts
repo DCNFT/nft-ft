@@ -20,23 +20,23 @@ import common from 'store/common'
 
 const PERSISTED_KEYS: string[] = ['navi']
 
-const migrations = {
-  0: (state) => {
-    // migration add userPredictionChainlinkChartDisclaimerShow
-    return {
-      ...state,
-      user: {
-        ...state?.user,
-        userPredictionChainlinkChartDisclaimerShow: true,
-      },
-    }
-  },
-  1: (state) => {
-    return {
-      ...state,
-    }
-  },
-}
+// const migrations = {
+//   0: (state) => {
+//     // migration add userPredictionChainlinkChartDisclaimerShow
+//     return {
+//       ...state,
+//       user: {
+//         ...state?.user,
+//         userPredictionChainlinkChartDisclaimerShow: true,
+//       },
+//     }
+//   },
+//   1: (state) => {
+//     return {
+//       ...state,
+//     }
+//   },
+// }
 
 const persistConfig = {
   key: 'primary',
@@ -44,7 +44,7 @@ const persistConfig = {
   blacklist: [''],
   storage,
   version: 1,
-  migrate: createMigrate(migrations, { debug: false }),
+  //migrate: createMigrate(migrations, { debug: false }),
 }
 
 // const ListsConfig = {

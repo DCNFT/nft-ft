@@ -1,5 +1,6 @@
 import { signIn, signOut, useSession } from 'next-auth/react'
 import Page from 'components/Layout/Page'
+import Login from 'views/Login'
 const LoginPage = () => {
   const { data: session, status } = useSession()
   const loading = status === 'loading'
@@ -12,9 +13,8 @@ const LoginPage = () => {
   console.log('session= ', session)
   return (
     <Page>
-      <button>구글로 로그인</button>
-      <button>카카오로 로그인</button>
-      <div>
+      <Login />
+      {/* <div>
         {!session && (
           <ul>
             <li>
@@ -42,7 +42,7 @@ const LoginPage = () => {
           </ul>
         )}
         {session && <button onClick={handleSignout}> 로그아웃</button>}
-      </div>
+      </div> */}
     </Page>
   )
 }
