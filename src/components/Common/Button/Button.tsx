@@ -18,7 +18,7 @@ const Button = (props: ButtonProps) => {
 }
 
 const StyledButton = styled.button`
-  width: ${(props) => (props.width ? props.width : '100%')};
+  width: ${(props) => (props.width ? props.width : 'auto')}
   outline: none;
   border: none;
   box-sizing: border-box;
