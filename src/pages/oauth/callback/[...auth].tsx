@@ -8,8 +8,11 @@ const AuthCallback = () => {
     const authParams = router.query.auth
     const code = router.query.code
 
-    console.log(code)
-    if (code) {
+    const access_token = router?.asPath?.split('=')[1]?.split('&')[0] //token 출력
+    console.log('router ', router)
+    console.log('access_token = ', access_token)
+    console.log(' code', code)
+    if (code || access_token) {
       if (authParams?.length === 0) return
       const coperation = authParams[0]
       if (coperation === 'kakao') {
@@ -37,9 +40,17 @@ const AuthCallback = () => {
           router.replace('/') // 토큰 받았았고 로그인됐으니 화면 전환시켜줌(메인으로)
         })
       }
-
       //...todo
       if (coperation === 'naver') {
+        axios({
+          method: 'GET',
+          url: `http://localhost:3031/api/oauth/callback/naver?code=${access_token}`,
+        }).then((res) => {
+          console.log(res)
+          const ACCESS_TOKEN = res.data.accessToken
+          localStorage.setItem('token', ACCESS_TOKEN) //예시로 로컬에 저장함
+          router.replace('/') // 토큰 받았았고 로그인됐으니 화면 전환시켜줌(메인으로)
+        })
       }
       //...todo
       if (coperation === 'apple') {
