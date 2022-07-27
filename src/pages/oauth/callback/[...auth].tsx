@@ -1,8 +1,11 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import axios from 'axios'
+import axios from 'lib'
+import { useDispatch } from 'react-redux'
+import { authActions } from 'store/auth'
 const AuthCallback = () => {
   const router = useRouter()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const authParams = router.query.auth
@@ -34,8 +37,9 @@ const AuthCallback = () => {
           method: 'GET',
           url: `http://localhost:3031/api/oauth/callback/google?code=${code}`,
         }).then((res) => {
-          console.log(res)
+          console.log('res = ', res)
           const ACCESS_TOKEN = res.data.accessToken
+          dispatch(authActions.SET_TOKEN(ACCESS_TOKEN))
           localStorage.setItem('token', ACCESS_TOKEN) //예시로 로컬에 저장함
           router.replace('/') // 토큰 받았았고 로그인됐으니 화면 전환시켜줌(메인으로)
         })

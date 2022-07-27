@@ -15,7 +15,7 @@ import {
 import storage from 'redux-persist/lib/storage'
 import naviReducer from 'store/navi/reducer'
 import common from 'store/common'
-
+import auth from 'store/auth'
 // import limitOrders from './limitOrders/reducer'
 
 const PERSISTED_KEYS: string[] = ['navi']
@@ -41,7 +41,7 @@ const PERSISTED_KEYS: string[] = ['navi']
 const persistConfig = {
   key: 'primary',
   whitelist: PERSISTED_KEYS,
-  blacklist: [''],
+  blacklist: ['auth'],
   storage,
   version: 1,
   //migrate: createMigrate(migrations, { debug: false }),
@@ -60,6 +60,7 @@ const persistedReducer = persistReducer(
   combineReducers({
     navi: naviReducer,
     common,
+    auth,
   }),
 )
 

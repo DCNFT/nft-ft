@@ -16,6 +16,8 @@ import Vibes from '../../../public/images/home/nft/Vibes@2x.png'
 import { useEffect } from 'react'
 import Cards from './components/Cards'
 import AOS from 'aos'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, AppState } from '../index'
 
 import { MasonryGrid, JustifiedGrid, FrameGrid, PackingGrid } from '@egjs/react-grid'
 
@@ -195,7 +197,8 @@ const Home: React.FC = () => {
   }, [])
 
   const { theme } = useTheme()
-
+  const { accessToken } = useSelector<AppState, AppState['auth']>((state) => state.auth)
+  console.log('accessToken = ', accessToken)
   const HomeSectionContainerStyles = {
     margin: '0',
     width: '100%',

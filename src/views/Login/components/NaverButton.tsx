@@ -17,9 +17,15 @@ const NaverButton = () => {
   //   initializeNaverLogin()
   // }, [])
   const handle = () => {
-    router.push('https://nid.naver.com/oauth2.0/authorize')
+    router.push(
+      'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' +
+        process.env.NEXT_PUBLIC_NAVER_CLIENT_ID +
+        '&redirect_uri=' +
+        'http://localhost:3001/oauth/callback/naver' +
+        '&state=RANDOM_STATE',
+    )
   }
-  return <button onClick={handle}>네이버로그인 </button>
+  return <button onClick={handle}> 네이버 로그인 </button>
 }
 
 export default NaverButton
