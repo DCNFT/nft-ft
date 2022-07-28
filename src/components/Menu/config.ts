@@ -41,12 +41,8 @@ const config = [
         href: '/info',
       },
       {
-        label: 'IFO',
-        href: '/ifo',
-      },
-      {
-        label: 'Voting',
-        href: '/voting',
+        label: '내 nft',
+        href: '/mynft',
       },
     ],
   },
