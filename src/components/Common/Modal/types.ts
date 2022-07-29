@@ -11,7 +11,8 @@ export interface InjectedProps {
 }
 
 export interface ModalProps extends InjectedProps, BoxProps {
-  title: string
+  title?: string
+  hideTitle?: boolean
   hideCloseButton?: boolean
   onBack?: () => void
   bodyPadding?: string

@@ -38,16 +38,11 @@ function MyApp(props: AppProps) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="" />
         <title>TEST</title>
-        <link
-          href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
-          rel="stylesheet"
-          type="text/css"
-        />
         <script
           type="text/javascript"
           src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
           charSet="utf-8"
-        ></script>
+        />
       </Head>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>

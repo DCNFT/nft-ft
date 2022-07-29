@@ -13,13 +13,15 @@ import LayoutContainer from './Layout/LayoutContainer'
 import ImageWrapper from './Layout/ImageWrapper'
 import NFTMonitoring from '../../../public/images/home/nft/Monitoring_2_1.png'
 import Vibes from '../../../public/images/home/nft/Vibes@2x.png'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Cards from './components/Cards'
 import AOS from 'aos'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from '../index'
 
 import { MasonryGrid, JustifiedGrid, FrameGrid, PackingGrid } from '@egjs/react-grid'
+import { useModal } from '../../components/Common'
+import { LoginModal } from './components/LoginModal'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
@@ -173,6 +175,7 @@ const HeadingContainer = styled.div`
 //placement
 
 const MainButton = styled.button`
+  cursor: pointer;
   outline: none;
   border: none;
   box-sizing: border-box;
@@ -214,6 +217,8 @@ const Home: React.FC = () => {
       <Text>Donec imperdiet lorem nulla </Text>
     </>
   )
+
+  const [onPresentLogin] = useModal(<LoginModal />)
 
   return (
     <>
@@ -267,7 +272,7 @@ const Home: React.FC = () => {
             data-aos="fade-up"
             data-aos-anchor-placement="top-center"
           >
-            <MainButton> JOIN US</MainButton>
+            <MainButton onClick={onPresentLogin}> JOIN US</MainButton>
           </div>
         </HeadingContainer>
       </BackgroundWrapper>

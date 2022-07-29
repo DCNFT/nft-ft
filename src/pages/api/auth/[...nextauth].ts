@@ -23,4 +23,17 @@ export default NextAuth({
     signIn: '/',
   },
   secret: process.env.SECRET,
+  callbacks: {
+    session: async ({ session, token, user, ...args }) => {
+      //console.log('session', session, token, user, args)
+
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          sub: token.sub,
+        },
+      }
+    },
+  },
 })
