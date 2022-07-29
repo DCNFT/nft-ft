@@ -123,7 +123,7 @@ const NAVER_LOGIN_URL =
 export const LoginModal: React.FC<ModalProps> = ({ onDismiss, ...props }) => {
   const router = useRouter()
   return (
-    <Modal title="" onDismiss={onDismiss} {...props}>
+    <Modal title="로그인" onDismiss={onDismiss} {...props}>
       <LoginButton
         loginType={EType.NAVER}
         onClick={() => {

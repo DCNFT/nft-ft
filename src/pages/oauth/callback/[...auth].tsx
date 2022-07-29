@@ -17,6 +17,7 @@ const AuthCallback = () => {
     if (code || access_token) {
       if (authParams?.length === 0) return
       const coperation = authParams[0]
+      console.log('coperation = ', coperation)
       if (coperation === 'kakao') {
         axios({
           method: 'GET',
