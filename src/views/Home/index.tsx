@@ -201,7 +201,7 @@ const Home: React.FC = () => {
 
   const { theme } = useTheme()
   const { accessToken } = useSelector<AppState, AppState['auth']>((state) => state.auth)
-  console.log('accessToken = ', accessToken)
+  console.log('index accessToken=', accessToken)
   const HomeSectionContainerStyles = {
     margin: '0',
     width: '100%',

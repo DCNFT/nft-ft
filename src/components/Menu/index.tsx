@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import Flex from '../Common/Box/Flex'
+import { Box } from '../Common/Box'
+import { Button } from 'components/Common/Button'
 import MenuItem from 'components/Menu/MenuItem'
 import DropdownMenu from './DropdownMenu'
 import MenuItemsMock from './mock'
 import MenuConfig from './config'
 import { useRouter } from 'next/router'
 import { getActiveMenuItem, getActiveSubMenuItem } from './utils'
+import { useIsLogin } from 'store/auth/hooks'
 
-const MENU_HEIGHT = 40
+const MENU_HEIGHT = 50
 const St = {
   Wrapper: styled.div`
     position: relative;
@@ -50,10 +53,14 @@ const St = {
 
 const MenuWrapper = () => {
   const { pathname } = useRouter()
+  const router = useRouter()
   const [showMenu, setShowMenu] = useState(true)
   const activeMenuItem = getActiveMenuItem({ menuConfig: MenuConfig, pathname })
   const activeSubMenuItem = getActiveSubMenuItem({ menuItem: activeMenuItem, pathname })
-
+  const isLogin = useIsLogin()
+  const handleLogin = () => {
+    router.push('login')
+  }
   return (
     <St.Wrapper>
       <St.FixedContainer showMenu={showMenu} height={MENU_HEIGHT}>
@@ -72,6 +79,19 @@ const MenuWrapper = () => {
                   </DropdownMenu>
                 )
               })}
+          </Flex>
+          <Flex justifyContent="center" alignItems="center">
+            {isLogin ? (
+              <>
+                <Box width="40px" height="40px" borderRadius="50%">
+                  <img src="" alt="" style={{ width: '100%', height: '100%' }} />
+                </Box>
+
+                <Button onClick={handleLogin}>로그인</Button>
+              </>
+            ) : (
+              <Button onClick={handleLogin}>로그인</Button>
+            )}
           </Flex>
         </St.StyledNav>
       </St.FixedContainer>

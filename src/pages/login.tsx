@@ -2,6 +2,8 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 import Page from 'components/Layout/Page'
 import Login from 'views/Login'
 import cookies from 'next-cookies'
+import axios from 'lib'
+import { refreshPage } from 'lib/auth'
 
 const LoginPage = () => {
   const { data: session, status } = useSession()
@@ -53,10 +55,25 @@ export default LoginPage
 
 export function requireAuthentication(gssp) {
   return async (context) => {
+    console.log('context = ', context)
     const { req, res } = context
     const cokki = cookies(context)
 
-    console.log(cokki)
+    context.res.setHeader('set-cookie', '')
+    const cookie = context.req ? context.req.headers.cookie : ''
+    // axios.defaults.headers.common.Cookie = ''
+
+    if (context.req && cookie) {
+      axios.defaults.headers.common.Cookie = cookie
+
+      //cookies.parse(cookie).Authorization = ''
+      // const bearer = `Bearer ${accessToken}`
+      // axios.defaults.headers.common['Authorization'] = cookies.parse(cookie).Authorization
+      axios.defaults.headers.common['refresh'] = cokki['refresh-token']
+    }
+    // const respage = await refreshPage()
+    // console.log('restpage = ', respage)
+    console.log('requireAuthentication cokki', cokki)
     // if (!token) {
     //   // Redirect to login page
     //   return {
