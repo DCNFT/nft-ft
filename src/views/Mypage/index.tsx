@@ -1,4 +1,12 @@
+import NFTCard from './components/NFTCard'
 const MyPage = () => {
-  return <div></div>
+  return (
+    <div>
+      <NFTCard />
+      <NFTCard />
+      <NFTCard />
+      <NFTCard />
+    </div>
+  )
 }
 export default MyPage

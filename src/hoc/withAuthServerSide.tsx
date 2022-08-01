@@ -19,8 +19,10 @@ export function withAuthServerSideProps(getServerSidePropsFunc?: Function) {
     if (context.req && cookie) {
       axios.defaults.headers.common.Cookie = cookie
       const bearer = `Bearer ${accessToken}`
+
       axios.defaults.headers.common['Authorization'] = bearer
-      axios.defaults.headers.common['refresh'] = nookie['refresh_token']
+      if (nookie['refresh_token'])
+        axios.defaults.headers.common['refresh'] = nookie['refresh_token']
     }
 
     const user = await getUser(context)
@@ -77,25 +79,3 @@ export const withAuthComponentToLogin = (Component: any) => {
     }
   }
 }
-// export function withAuthComponentToLogin(Component: any) {
-//   return ({ user, data }: { user: any; data: any }) => {
-//     const router = useRouter()
-//     const { dispatch } = useDispatch<any>()
-//     console.log(user)
-
-//     if (!user) {
-//       return <Component {...data.props} />
-//     }
-//     if (user) {
-//       dispatch(
-//         authActions.setAuth({
-//           accessToken: '',
-//           name: user.username,
-//           email: user.email,
-//         }),
-//       )
-//       router.push('/')
-//       return <Component {...data.props} />
-//     }
-//   }
-// }

@@ -1,5 +1,10 @@
+import Mypage from 'views/Mypage'
 const MyPage = () => {
-  return <div></div>
+  return (
+    <div>
+      <Mypage />
+    </div>
+  )
 }
 
 export default MyPage
