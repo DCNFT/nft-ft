@@ -1,18 +1,23 @@
 import CardBody from 'components/Common/Card/CardBody'
 import CardFooter from 'components/Common/Card/CardFooter'
 import Card from 'components/Common/Card/Card'
-import Image from 'components/Common/Image/Image'
+import Image from 'components/Common/Image/StyledImage'
 
-const NFTCard = () => {
+type NFTCardProps = {
+  imageUrl: string
+  tokenId: string
+  isSelected: boolean
+  handleOnClick: () => void
+}
+
+const NFTCard = ({ imageUrl, tokenId, isSelected, handleOnClick }: NFTCardProps) => {
   return (
-    <Card>
-      <CardBody style={{ height: '150px' }} p={0}>
-        <Image width={500} height={150} alt="" src="/src.png" isUseBlur />
+    <Card isActive={isSelected} onClick={handleOnClick}>
+      <CardBody style={{ height: '250px' }} p={0}>
+        <Image isFill alt="" src={imageUrl} />
       </CardBody>
       <CardFooter>
-        <div>토큰 아이디</div>
-
-        <div>토큰 아이디</div>
+        <div>{tokenId}</div>
       </CardFooter>
     </Card>
   )

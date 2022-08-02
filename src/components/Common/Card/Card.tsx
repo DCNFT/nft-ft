@@ -59,11 +59,11 @@ const St = {
     color: ${({ theme, isDisabled }) => theme.colors[isDisabled ? 'textDisabled' : 'text']};
     overflow: hidden;
     position: relative;
-
+    cursor: pointer;
     ${({ isActive }) =>
       isActive &&
       css`
-        animation: ${PromotedGradient} 3s ease infinite;
+        animation: ${PromotedGradient} 1.5s ease infinite;
         background-size: 400% 400%;
       `}
 
@@ -80,7 +80,7 @@ const St = {
 
 const Card = ({ children, background, ...props }: CardProps) => {
   return (
-    <St.CardWrapper>
+    <St.CardWrapper {...props}>
       <St.CardInner background={background} hasCustomBorder={!!props.borderBackground}>
         {children}
       </St.CardInner>
